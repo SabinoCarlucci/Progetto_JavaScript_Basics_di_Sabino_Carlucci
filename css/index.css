@@ -1,0 +1,138 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fcf8f3;
+}
+
+.counter-container, .counter-container > * {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.counter-container {
+  margin-top: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+@media (min-width: 450px) {
+  .counter-container {
+    width: 400px;
+  }
+}
+
+.btn-plus, .btn-minus, .digit {
+  width: 15vw;
+  height: 15vw;
+  text-align: center;
+}
+@media (min-width: 450px) {
+  .btn-plus, .btn-minus, .digit {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.btn-plus, .btn-minus {
+  font-size: 10vw;
+}
+@media (min-width: 450px) {
+  .btn-plus, .btn-minus {
+    font-size: 40px;
+  }
+}
+
+.display {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.display .digit {
+  font-size: 40px;
+  font-weight: bolder;
+  background: #ffebb7;
+  border: #fcf8f3 solid 2px;
+  border-radius: 11px;
+}
+@media (min-width: 600px) {
+  .display .digit {
+    border: #fcf8f3 solid 6px;
+    border-radius: 18px;
+  }
+}
+.display button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15vw;
+  height: 10vw;
+  border-radius: 11px;
+}
+@media (min-width: 450px) {
+  .display button {
+    width: 60px;
+    height: 40px;
+    border-radius: 18px;
+  }
+}
+
+.frame {
+  position: absolute;
+  left: 6.5vw;
+  top: 5.5vw;
+  border: black solid 2vw;
+  border-radius: 25px;
+  width: 77vw;
+  height: 58vw;
+  z-index: -1;
+}
+@media (min-width: 450px) {
+  .frame {
+    position: absolute;
+    left: 27px;
+    top: 19px;
+    border: black solid 6px;
+    border-radius: 25px;
+    width: 346px;
+    height: 224px;
+  }
+}
+
+button {
+  border: #fcf8f3 solid 2vw;
+}
+@media (min-width: 450px) {
+  button {
+    border: #fcf8f3 solid 6px;
+  }
+}
+
+.display-container {
+  width: -webkit-fill-available;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10vw;
+  margin-bottom: 10vw;
+}
+@media (min-width: 450px) {
+  .display-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.btn-reset, .btn-save {
+  font-family: Tahoma;
+  font-size: 5vw;
+  padding: 3px 6px;
+}
+@media (min-width: 450px) {
+  .btn-reset, .btn-save {
+    font-size: 20px;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,156 @@
+$background: #fcf8f3;
+$display: #ffebb7;
+
+$btn_side: 15vw;
+$btn_side_desktop: 60px;
+
+$switch_height: calc($btn_side * 2/3);
+$switch_height_desktop: calc($btn_side_desktop * 2/3);
+
+$btn_border: 2vw;
+$btn_border_desktop: 6px;
+
+$btn_reset_height: calc($btn_side/3);
+$btn_reset_height_desktop: calc($btn_side_desktop/3);
+
+$counter_container_width: 90vw;
+$counter_container_width_desktop: 400px;
+
+$btn_space: calc($btn_side * 2/3);
+$btn_space_desktop: calc($btn_side_desktop * 2/3);
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background;
+}
+
+.counter-container, .counter-container > * {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.counter-container {
+  margin-top: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: $counter_container_width;
+
+  @media (min-width: 450px) {
+    width: $counter_container_width_desktop;
+  }
+}
+
+.btn-plus, .btn-minus, .digit{
+  width: $btn_side;
+  height: $btn_side;
+  text-align: center;
+
+  @media (min-width: 450px) {
+    width: $btn_side_desktop;
+    height: $btn_side_desktop;
+  }
+}
+
+.btn-plus, .btn-minus {
+  font-size: calc($btn_side * 2/3);
+  @media (min-width: 450px) {
+    font-size: calc($btn_side_desktop * 2/3);
+  }
+}
+
+.display {
+  display: flex;
+  flex-direction: row-reverse;
+  .digit {
+    font-size: 40px;
+    font-weight: bolder;
+    background: $display;
+    border: $background solid 2px;
+    border-radius: 11px;
+
+    @media (min-width: 600px){
+      border: $background solid $btn_border_desktop;
+      border-radius: 18px;
+    }
+  }
+  button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: $btn_side;
+    height: $switch_height;
+    border-radius: 11px;
+
+    @media (min-width: 450px) {
+      width: $btn_side_desktop;
+      height: $switch_height_desktop;
+      border-radius: 18px;
+    }
+  }
+}
+
+.frame {
+  position: absolute;
+  left: calc($btn_side/2) - calc($btn-border / 2);
+  top: calc($btn_border + ($btn_reset_height + $btn_border)/2);
+  border: black solid $btn_border;
+  border-radius: 25px;
+  width: $counter_container_width - $btn_side + $btn_border;
+  height: calc($btn_space * 2) +
+          calc($btn_border * 4) +
+          $btn_reset_height +
+          $btn_side +
+          $switch_height;
+  z-index: -1;
+
+  @media (min-width: 450px) {
+    position: absolute;
+    left: calc($btn_side_desktop/2) - calc($btn_border_desktop/2);
+    top: ($btn_border_desktop + calc(($btn_reset_height_desktop + $btn_border_desktop)/2));
+    border: black solid $btn_border_desktop;
+    border-radius: 25px;
+    width: $counter_container_width_desktop - $btn_side_desktop + $btn_border_desktop;
+    height: calc($btn_space_desktop * 2) +
+            calc($btn_border_desktop * 4) +
+            $btn_reset_height_desktop +
+            $btn_side_desktop +
+            $switch_height_desktop ;
+  }
+}
+
+button {
+  border: $background solid $btn_border;
+
+  @media (min-width: 450px) {
+    border: $background solid $btn_border_desktop;
+  }
+}
+
+.display-container {
+  width: -webkit-fill-available;
+  display: flex;
+  justify-content: space-between;
+  margin-top: $btn_space;
+  margin-bottom: $btn_space;
+
+  @media (min-width: 450px) {
+    margin-top: $btn_space_desktop;
+    margin-bottom: $btn_space_desktop;
+  }
+}
+
+.btn-reset, .btn-save {
+  font-family: Tahoma;
+  font-size: $btn_reset_height;
+  padding: 3px 6px;
+
+  @media (min-width: 450px) {
+    font-size: $btn_reset_height_desktop;
+  }
+}
+

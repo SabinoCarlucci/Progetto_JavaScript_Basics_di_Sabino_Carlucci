@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sabino Carlucci - Counter</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="counter-container">
+    <button class="btn-reset" onclick="reset()">RESET</button>
+    <div class="frame"></div>
+    <div class="display-container">
+        <button class="btn-minus" onclick="decrease()">-</button>
+        <div class="display">
+            <div id="units">
+                <div class="digit">0</div>
+                <button></button>
+            </div>
+            <div id="tens">
+                <div class="digit">0</div>
+                <button></button>
+            </div>
+            <div id="hundreds">
+                <div class="digit">0</div>
+                <button></button>
+            </div>
+            <div id="thousands">
+                <div class="digit">0</div>
+                <button></button>
+            </div>
+        </div>
+        <button class="btn-plus" onclick="increase()">+</button>
+    </div>
+    <button class="btn-save" onclick="reset()">SAVE</button>
+</div>
+
+<script src="js/index.js"></script>
+</body>
+</html>
