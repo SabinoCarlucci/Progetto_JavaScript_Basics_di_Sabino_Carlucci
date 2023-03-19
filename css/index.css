@@ -78,6 +78,9 @@ body {
     border-radius: 18px;
   }
 }
+.display button.on {
+  background: green;
+}
 
 .frame {
   position: absolute;
