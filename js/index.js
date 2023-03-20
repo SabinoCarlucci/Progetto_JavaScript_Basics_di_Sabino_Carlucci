@@ -35,12 +35,13 @@ for (let i of buttons) {
 }
 
 function increase() {
-    //fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
-    if(units){count++}
-    if(tens){count=count+10}
-    if(hundreds){count=count+100}
-    if(thousands){count=count+1000}
-    showCount(count);
+    if (count < 9999) {
+        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count); return;}}
+        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count); return;}}
+        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count); return;}}
+        if(units){count++}
+        showCount(count);
+    }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
 }
 
 function decrease() {
