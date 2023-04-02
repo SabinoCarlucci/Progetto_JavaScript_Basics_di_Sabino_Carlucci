@@ -48,11 +48,13 @@ body {
 .btn-plus, .btn-minus, .digit{
   width: $btn_side;
   height: $btn_side;
+  line-height: $btn_side;
   text-align: center;
 
   @media (min-width: 450px) {
     width: $btn_side_desktop;
     height: $btn_side_desktop;
+    line-height: $btn_side_desktop;
   }
 }
 
@@ -73,9 +75,14 @@ body {
     border: $background solid 2px;
     border-radius: 11px;
 
+    @media (min-width: 350px){
+      font-size: 48px;
+    }
+
     @media (min-width: 600px){
       border: $background solid $btn_border_desktop;
       border-radius: 18px;
+      font-size: 40px;
     }
   }
   button {
@@ -113,7 +120,6 @@ body {
   z-index: -1;
 
   @media (min-width: 450px) {
-    position: absolute;
     left: calc($btn_side_desktop/2) - calc($btn_border_desktop/2);
     top: ($btn_border_desktop + calc(($btn_reset_height_desktop + $btn_border_desktop)/2));
     border: black solid $btn_border_desktop;
@@ -155,6 +161,64 @@ button {
 
   @media (min-width: 450px) {
     font-size: $btn_reset_height_desktop;
+  }
+}
+
+//save log
+.log_registry {
+  border: black solid $btn_border;
+  border-radius: 25px;
+  padding: 5px 0;
+  width: $counter_container_width - $btn_side + $btn_border;
+
+
+  @media (min-width: 450px) {
+    left: calc($btn_side_desktop/2) - calc($btn_border_desktop/2);
+    border: black solid $btn_border_desktop;
+    border-radius: 25px;
+    width: $counter_container_width_desktop - $btn_side_desktop + $btn_border_desktop;
+  }
+}
+
+.log {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+  background-color: #eff1f4;
+  border: $background solid 3.5px;
+  border-radius: 25px;
+  .display_log {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .digit_small {
+    width: calc($btn_side/2);
+    height: calc($btn_side/2);
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+    background: $display;
+    border: $background solid 1px;
+    border-radius: 8px;
+
+    @media (min-width: 450px) {
+      width: 28px;
+      height: 28px;
+    }
+
+  }
+  .date_time {
+    align-self: center;
+  }
+  .deleteMe {
+    background-color: red;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    border-radius: 50%;
+    text-align: center;
   }
 }
 

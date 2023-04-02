@@ -4,10 +4,20 @@ let tensDigit = document.getElementById("tens").getElementsByClassName("digit")[
 let hundredsDigit = document.getElementById("hundreds").getElementsByClassName("digit")[0];
 let thousandsDigit = document.getElementById("thousands").getElementsByClassName("digit")[0];
 
+let logRegistry = document.querySelector(".log_registry");
+
 let units = true;
 let tens = false;
 let hundreds = false;
 let thousands = false;
+
+document.addEventListener( "click", deleteLog ); //click event for deleting single log
+function deleteLog(event){
+    let element = event.target;
+    if(element.tagName == 'DIV' && element.classList.contains("deleteMe")){
+        element.parentElement.remove();
+    }
+}
 
 let buttons = document.getElementsByClassName("digitBtn");
 for (let i of buttons) {
@@ -36,21 +46,21 @@ for (let i of buttons) {
 
 function increase() {
     if (count < 9999) {
-        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count); return;}}
-        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count); return;}}
-        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count); return;}}
+        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); return;}}
+        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); return;}}
+        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); return;}}
         if(units){count++}
-        showCount(count);
+        showCount(count, false);
     }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
 }
 
 function decrease() {
     if (count > 0) {
-        if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count); return;}}
-        if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count); return;}}
-        if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count); return;}}
+        if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); return;}}
+        if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); return;}}
+        if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); return;}}
         if(units){count--}
-        showCount(count)
+        showCount(count, false)
     } //mettere else con messaggio di errore
 }
 
@@ -62,11 +72,42 @@ function reset() {
     thousandsDigit.innerText = "0";
 }
 
-function showCount(count) {
+function save() {
+    console.log(count);
+    showCount(count, true); //riscrivi con event listener in base a quale tasto premi, se salva o no
+}
+
+function showCount(count, save) {
     let myFunc = num => Number(num);
     let intArr = Array.from(count.toString(), myFunc)
-    unitsDigit.innerText = intArr[intArr.length - 1].toString();
-    tensDigit.innerText = intArr[intArr.length - 2] ? intArr[intArr.length - 2] : "0";
-    hundredsDigit.innerText = intArr[intArr.length - 3] ? intArr[intArr.length - 3] : "0";
-    thousandsDigit.innerText = intArr[intArr.length - 4] ? intArr[intArr.length - 4] : "0";
+    let tempUnits = intArr[intArr.length - 1].toString();
+    let tempTens = intArr[intArr.length - 2] ? intArr[intArr.length - 2] : "0";
+    let tempHundreds = intArr[intArr.length - 3] ? intArr[intArr.length - 3] : "0";
+    let tempThousands = intArr[intArr.length - 4] ? intArr[intArr.length - 4] : "0";
+    if (save) {
+        let year = new Date().getFullYear();
+        let month = new Date().getMonth()+1;
+        let day = new Date().getDate();
+        let hours = new Date().getHours();
+        let minutes = new Date().getMinutes();
+        let seconds = new Date().getSeconds();
+        logRegistry.innerHTML += `
+        <div class="log">
+            <div class="display_log">
+                <div class="digit_small units_log">${tempUnits}</div>
+                <div class="digit_small tens_log">${tempTens}</div>
+                <div class="digit_small hundreds_log">${tempHundreds}</div>
+                <div class="digit_small thousands_log">${tempThousands}</div>
+            </div>
+            <div class="date_time">
+                ${year}/${month}/${day}  ${hours}:${minutes}:${seconds}
+            </div>
+            <div class="deleteMe">✘</div>
+        </div>`;
+    } else {
+        unitsDigit.innerText = tempUnits;
+        tensDigit.innerText = tempTens;
+        hundredsDigit.innerText = tempHundreds;
+        thousandsDigit.innerText = tempThousands;
+    }
 }
