@@ -91,7 +91,7 @@ function showCount(count, save) {
         let hours = new Date().getHours();
         let minutes = new Date().getMinutes();
         let seconds = new Date().getSeconds();
-        logRegistry.innerHTML += `
+        let newLog = `
         <div class="log">
             <div class="display_log">
                 <div class="digit_small units_log">${tempUnits}</div>
@@ -104,6 +104,7 @@ function showCount(count, save) {
             </div>
             <div class="deleteMe">✘</div>
         </div>`;
+        logRegistry.insertAdjacentHTML('afterbegin', newLog) ;
     } else {
         unitsDigit.innerText = tempUnits;
         tensDigit.innerText = tempTens;

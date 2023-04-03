@@ -170,7 +170,9 @@ button {
   border-radius: 25px;
   padding: 5px 0;
   width: $counter_container_width - $btn_side + $btn_border;
-
+  max-height: 40vh;
+  overflow-y: auto;
+  //::-webkit-scrollbar: ; //cambiare la scrollbar
 
   @media (min-width: 450px) {
     left: calc($btn_side_desktop/2) - calc($btn_border_desktop/2);
