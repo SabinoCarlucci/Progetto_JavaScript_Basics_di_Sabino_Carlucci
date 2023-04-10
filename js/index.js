@@ -77,6 +77,13 @@ function save() {
     showCount(count, true); //riscrivi con event listener in base a quale tasto premi, se salva o no
 }
 
+function twoDigits(number) {
+    if (number < 10) {
+        number = "0" + number;
+        return number;
+    }
+}
+
 function showCount(count, save) {
     let myFunc = num => Number(num);
     let intArr = Array.from(count.toString(), myFunc)
@@ -86,11 +93,11 @@ function showCount(count, save) {
     let tempThousands = intArr[intArr.length - 4] ? intArr[intArr.length - 4] : "0";
     if (save) {
         let year = new Date().getFullYear();
-        let month = new Date().getMonth()+1;
-        let day = new Date().getDate();
-        let hours = new Date().getHours();
-        let minutes = new Date().getMinutes();
-        let seconds = new Date().getSeconds();
+        let month = new Date().toLocaleString('default', { month: 'long' });
+        let day = new Date().getDate().toString().padStart(2, '0');
+        let hours = new Date().getHours().toString().padStart(2, '0');
+        let minutes = new Date().getMinutes().toString().padStart(2, '0');
+        let seconds = new Date().getSeconds().toString().padStart(2, '0');
         let newLog = `
         <div class="log">
             <div class="display_log">
@@ -100,9 +107,16 @@ function showCount(count, save) {
                 <div class="digit_small thousands_log">${tempThousands}</div>
             </div>
             <div class="date_time">
-                ${year}/${month}/${day}  ${hours}:${minutes}:${seconds}
+                <div class="date">
+                    <img src="images/calendar-small-page.png" alt="calendario">
+                    <span>${day}</span>/<span>${month}</span>/<span>${year}</span>
+                </div>
+                <div class="time">
+                    <img src="images/clock-circular-outline.png" alt="orologio">
+                    <span>${hours}</span>:<span>${minutes}</span>:<span>${seconds}</span>
+                </div>
             </div>
-            <div class="deleteMe">✘</div>
+            <div class="deleteMe">x</div>
         </div>`;
         logRegistry.insertAdjacentHTML('afterbegin', newLog) ;
     } else {

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Concert+One&display=swap");
 * {
   padding: 0;
   box-sizing: border-box;
@@ -28,14 +29,12 @@ body {
 .btn-plus, .btn-minus, .digit {
   width: 15vw;
   height: 15vw;
-  line-height: 15vw;
   text-align: center;
 }
 @media (min-width: 450px) {
   .btn-plus, .btn-minus, .digit {
     width: 60px;
     height: 60px;
-    line-height: 60px;
   }
 }
 
@@ -68,7 +67,7 @@ body {
   .display .digit {
     border: #fcf8f3 solid 6px;
     border-radius: 18px;
-    font-size: 40px;
+    line-height: 48px;
   }
 }
 .display button {
@@ -113,6 +112,7 @@ body {
 
 button {
   border: #fcf8f3 solid 2vw;
+  cursor: pointer;
 }
 @media (min-width: 450px) {
   button {
@@ -164,9 +164,8 @@ button {
 
 .log {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px;
   background-color: #eff1f4;
   border: #fcf8f3 solid 3.5px;
   border-radius: 25px;
@@ -174,6 +173,7 @@ button {
 .log .display_log {
   display: flex;
   flex-direction: row-reverse;
+  margin: 5px;
 }
 .log .digit_small {
   width: 7.5vw;
@@ -193,15 +193,33 @@ button {
 }
 .log .date_time {
   align-self: center;
+  display: grid;
+  row-gap: 3px;
+}
+.log .date_time div {
+  margin: 2px 0;
+}
+.log .date_time span {
+  background-color: #ffebb7;
+  padding: 0 3px;
+  border-radius: 25%;
 }
 .log .deleteMe {
+  padding-right: 5px;
+  font-family: "Concert One", cursive;
   background-color: red;
-  font-size: 20px;
-  height: 35px;
-  width: 35px;
-  line-height: 35px;
-  border-radius: 50%;
+  color: black;
+  font-size: 40px;
+  height: 100%;
+  width: 40px;
+  line-height: inherit;
+  border-radius: 0 25px 25px 0;
   text-align: center;
+}
+.log .deleteMe:hover {
+  background-color: #ef3434;
+  color: #eff1f4;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=index.css.map */
