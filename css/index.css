@@ -18,7 +18,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 90vw;
+  width: 98vw;
 }
 @media (min-width: 450px) {
   .counter-container {
@@ -95,7 +95,7 @@ body {
   top: 5.5vw;
   border: black solid 2vw;
   border-radius: 25px;
-  width: 77vw;
+  width: 85vw;
   height: 58vw;
   z-index: -1;
 }
@@ -149,7 +149,7 @@ button {
   border: black solid 2vw;
   border-radius: 25px;
   padding: 5px 0;
-  width: 77vw;
+  width: 85vw;
   max-height: 40vh;
   overflow-y: auto;
 }

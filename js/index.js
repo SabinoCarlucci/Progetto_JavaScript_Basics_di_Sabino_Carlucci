@@ -108,11 +108,11 @@ function showCount(count, save) {
             </div>
             <div class="date_time">
                 <div class="date">
-                    <img src="images/calendar-small-page.png" alt="calendario">
+                    <!--<img src="images/calendar-small-page.png" alt="calendario">-->
                     <span>${day}</span>/<span>${month}</span>/<span>${year}</span>
                 </div>
                 <div class="time">
-                    <img src="images/clock-circular-outline.png" alt="orologio">
+                    <!--<img src="images/clock-circular-outline.png" alt="orologio">-->
                     <span>${hours}</span>:<span>${minutes}</span>:<span>${seconds}</span>
                 </div>
             </div>
