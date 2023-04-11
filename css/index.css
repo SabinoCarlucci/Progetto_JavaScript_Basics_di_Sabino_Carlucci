@@ -8,6 +8,10 @@ body {
   background: #fcf8f3;
 }
 
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 200, "opsz" 40;
+}
+
 .counter-container, .counter-container > * {
   margin-right: auto;
   margin-left: auto;
@@ -163,6 +167,7 @@ button {
 }
 
 .log {
+  height: 57px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -207,7 +212,7 @@ button {
 .log .deleteMe {
   padding-right: 5px;
   font-family: "Concert One", cursive;
-  background-color: red;
+  background-color: transparent;
   color: black;
   font-size: 40px;
   height: 100%;
@@ -215,6 +220,9 @@ button {
   line-height: inherit;
   border-radius: 0 25px 25px 0;
   text-align: center;
+}
+.log .deleteMe p {
+  margin: 0;
 }
 .log .deleteMe:hover {
   background-color: #ef3434;

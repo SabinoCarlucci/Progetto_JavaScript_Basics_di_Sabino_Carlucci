@@ -14,8 +14,8 @@ let thousands = false;
 document.addEventListener( "click", deleteLog ); //click event for deleting single log
 function deleteLog(event){
     let element = event.target;
-    if(element.tagName == 'DIV' && element.classList.contains("deleteMe")){
-        element.parentElement.remove();
+    if(element.tagName == 'P'&& element.parentElement.classList.contains("deleteMe") && element.classList.contains("material-symbols-outlined")){
+        element.parentElement.parentElement.remove();
     }
 }
 
@@ -116,7 +116,9 @@ function showCount(count, save) {
                     <span>${hours}</span>:<span>${minutes}</span>:<span>${seconds}</span>
                 </div>
             </div>
-            <div class="deleteMe">x</div>
+            <div class="deleteMe">
+                <p class="material-symbols-outlined">close</p>
+            </div>
         </div>`;
         logRegistry.insertAdjacentHTML('afterbegin', newLog) ;
     } else {

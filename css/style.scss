@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
+
+
 //colors
 $background: #fcf8f3;
 $display: #ffebb7;
@@ -32,6 +34,14 @@ $btn_space_desktop: calc($btn_side_desktop * 2/3);
 body {
   background: $background;
 }
+
+ .material-symbols-outlined {
+   font-variation-settings:
+           'FILL' 0,
+           'wght' 700,
+           'GRAD' 200,
+           'opsz' 40
+ }
 
 .counter-container, .counter-container > * {
   margin-right: auto;
@@ -189,7 +199,7 @@ button {
 }
 
 .log {
-  //height: 55px;
+  height: 57px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -235,8 +245,8 @@ button {
   .deleteMe {
     padding-right: 5px;
     font-family: 'Concert One', cursive;
-    //background-color: transparent; //ripristinare questo dopo aver centrato la maledetta X
-    background-color: red;
+    background-color: transparent; //ripristinare questo dopo aver centrato la maledetta X
+    //background-color: red;
     color: black;
     font-size: 40px;
     height: 100%;
@@ -244,6 +254,9 @@ button {
     line-height: inherit;
     border-radius: 0 25px 25px 0;
     text-align: center;
+    p {
+      margin: 0;
+    }
     &:hover {
       background-color: $delete;
       color: $buttons;
