@@ -1,8 +1,8 @@
 let count = 0;
-let unitsDigit = document.getElementById("units").getElementsByClassName("digit")[0];
-let tensDigit = document.getElementById("tens").getElementsByClassName("digit")[0];
-let hundredsDigit = document.getElementById("hundreds").getElementsByClassName("digit")[0];
-let thousandsDigit = document.getElementById("thousands").getElementsByClassName("digit")[0];
+const unitsDigit = Array.from(document.getElementById('units').querySelector('.digit').querySelectorAll('span'));
+const tensDigit = Array.from(document.getElementById('tens').querySelector('.digit').querySelectorAll('span'));
+const hundredsDigit = Array.from(document.getElementById('hundreds').querySelector('.digit').querySelectorAll('span'));
+const thousandsDigit = Array.from(document.getElementById('thousands').querySelector('.digit').querySelectorAll('span'));
 
 let logRegistry = document.querySelector(".log_registry");
 
@@ -49,7 +49,7 @@ function increase() {
         if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); return;}}
         if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); return;}}
         if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); return;}}
-        if(units){count++}
+        if(units){count++;}
         showCount(count, false);
     }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
 }
@@ -64,24 +64,46 @@ function decrease() {
     } //mettere else con messaggio di errore
 }
 
-function reset() {
-    count = 0;
-    unitsDigit.innerText = "0";
-    tensDigit.innerText = "0";
-    hundredsDigit.innerText = "0";
-    thousandsDigit.innerText = "0";
+//era questa per i numeri colorati +1/-1? cosa ci faccio adesso?
+function effect() {
+    const effect = document.querySelector(".plus_one");
+    effect.
+    effect.classList.add('fade-in');
+    setTimeout(() => {
+        effect.classList.remove('fade-in');
+    }, 1000);
 }
 
+function reset() {
+    count = 0;
+    spinNumbers(unitsDigit, 0);
+    spinNumbers(tensDigit, 0);
+    spinNumbers(hundredsDigit, 0);
+    spinNumbers(thousandsDigit, 0);
+}
+
+//questa serve ancora? forse dovrei scrivere qui il codice per salvare, e richiamarla in showcount()
 function save() {
     console.log(count);
     showCount(count, true); //riscrivi con event listener in base a quale tasto premi, se salva o no
 }
 
+// a che serve questa?
 function twoDigits(number) {
     if (number < 10) {
         number = "0" + number;
         return number;
     }
+}
+
+function spinNumbers(array, number) {
+    array.forEach((span, index) => {
+        if (index == number) {
+            span.style.top = '0';
+        } else {
+            span.style.top = `${index - number}em`;
+        }
+    })
 }
 
 function showCount(count, save) {
@@ -122,9 +144,10 @@ function showCount(count, save) {
         </div>`;
         logRegistry.insertAdjacentHTML('afterbegin', newLog) ;
     } else {
-        unitsDigit.innerText = tempUnits;
-        tensDigit.innerText = tempTens;
-        hundredsDigit.innerText = tempHundreds;
-        thousandsDigit.innerText = tempThousands;
+        // show numbers on display with spin effect
+        spinNumbers(unitsDigit, tempUnits);
+        spinNumbers(tensDigit, tempTens);
+        spinNumbers(hundredsDigit, tempHundreds);
+        spinNumbers(thousandsDigit, tempThousands);
     }
 }

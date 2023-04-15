@@ -56,7 +56,10 @@ body {
   flex-direction: row-reverse;
 }
 .display .digit {
-  font-size: 40px;
+  position: relative;
+  overflow: hidden;
+  font-size: 15vw;
+  line-height: 15vw;
   font-weight: bolder;
   background: #ffebb7;
   border: #fcf8f3 solid 2px;
@@ -64,15 +67,52 @@ body {
 }
 @media (min-width: 350px) {
   .display .digit {
-    font-size: 48px;
+    font-size: 60px;
+    line-height: 60px;
   }
 }
 @media (min-width: 600px) {
   .display .digit {
     border: #fcf8f3 solid 6px;
     border-radius: 18px;
-    line-height: 48px;
   }
+}
+.display .digit span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: top 0.3s ease-in-out;
+}
+.display .digit span:nth-child(1) {
+  top: 0em;
+}
+.display .digit span:nth-child(2) {
+  top: -1em;
+}
+.display .digit span:nth-child(3) {
+  top: -2em;
+}
+.display .digit span:nth-child(4) {
+  top: -3em;
+}
+.display .digit span:nth-child(5) {
+  top: -4em;
+}
+.display .digit span:nth-child(6) {
+  top: -5em;
+}
+.display .digit span:nth-child(7) {
+  top: -6em;
+}
+.display .digit span:nth-child(8) {
+  top: -7em;
+}
+.display .digit span:nth-child(9) {
+  top: -8em;
+}
+.display .digit span:nth-child(10) {
+  top: -9em;
 }
 .display button {
   display: block;
@@ -228,6 +268,26 @@ button {
   background-color: #ef3434;
   color: #eff1f4;
   cursor: pointer;
+}
+
+.plus_one {
+  opacity: 0;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

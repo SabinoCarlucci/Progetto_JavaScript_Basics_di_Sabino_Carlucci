@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
-
-
 //colors
 $background: #fcf8f3;
 $display: #ffebb7;
@@ -84,21 +82,43 @@ body {
   display: flex;
   flex-direction: row-reverse;
   .digit {
-    font-size: 40px;
+    position: relative;
+    overflow: hidden;
+    font-size: $btn_side;
+    line-height: $btn_side;
     font-weight: bolder;
     background: $display;
     border: $background solid 2px;
     border-radius: 11px;
 
     @media (min-width: 350px){
-      font-size: 48px;
+      font-size: $btn_side_desktop;
+      line-height: $btn_side_desktop;
     }
 
     @media (min-width: 600px){
       border: $background solid $btn_border_desktop;
       border-radius: 18px;
-      line-height: 48px;
+      //line-height: 48px;
     }
+
+    span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      transition: top 0.3s ease-in-out;
+    }
+    span:nth-child(1) { top: 0em; }
+    span:nth-child(2) { top: -1em; }
+    span:nth-child(3) { top: -2em; }
+    span:nth-child(4) { top: -3em; }
+    span:nth-child(5) { top: -4em; }
+    span:nth-child(6) { top: -5em; }
+    span:nth-child(7) { top: -6em; }
+    span:nth-child(8) { top: -7em; }
+    span:nth-child(9) { top: -8em; }
+    span:nth-child(10) { top: -9em; }
   }
   button {
     display: block;
@@ -262,6 +282,25 @@ button {
       color: $buttons;
       cursor: pointer;
     }
+  }
+}
 
+.plus_one {
+  opacity: 0;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
