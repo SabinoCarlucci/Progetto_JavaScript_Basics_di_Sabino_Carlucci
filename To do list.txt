@@ -1,13 +1,13 @@
-1) la prima volta che premi + i numeri sfarfallano. risolvi.
-1) verifica come si vede il display nei vari viewport, a schermo pieno c'era un problema con i numeri 
 1) animazione con +1/-1 sopra numeri contatore;
-	- div con dentro span sopra ogni cifra di display;
+	- div per contenere +1/-1 sopra ogni cifra di display;
 	- div deve essere posizione assoluta, perchè altrimenti sposta cifra display;
-	- span vuoto, funzione js aggiunge testo e classe css a seconda che sia addizione o sottrazione;
-	- classe css determina colore testo e animazione;
+	- div vuoto, funzione js aggiunge testo e colore a seconda che sia addizione o sottrazione;
+	- classe css determina animazione;
 	- stessa animazione per entrambe classi + e -;
 	- animazione fade in mentre si ingrandisce, e poi fade out mentre si rimpicciolisce;
+	- traslazione parte veloce e poi rallenta fino a fermarsi un attimo;
 2) animazioni pulsanti;
+3) gestire immagini icone orologio e calendario in log: visibili se desktop, nascoste in mobile;
 
 4) easter egg:
 	- premi x volte + quando sei a 9999 e appare vegeta che dice "it's over 9000";

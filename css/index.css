@@ -55,6 +55,27 @@ body {
   display: flex;
   flex-direction: row-reverse;
 }
+.display #units, .display #tens, .display #hundreds, .display #thousands {
+  position: relative;
+}
+.display .plus_one {
+  opacity: 0;
+  position: absolute;
+  color: red;
+  z-index: 1;
+  left: 5vw;
+  top: -5vw;
+  font-size: 15vw;
+  line-height: 15vw;
+}
+@media (min-width: 450px) {
+  .display .plus_one {
+    left: 20px;
+    top: -20px;
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
 .display .digit {
   position: relative;
   overflow: hidden;
@@ -65,7 +86,7 @@ body {
   border: #fcf8f3 solid 2px;
   border-radius: 11px;
 }
-@media (min-width: 350px) {
+@media (min-width: 450px) {
   .display .digit {
     font-size: 60px;
     line-height: 60px;
@@ -73,8 +94,7 @@ body {
 }
 @media (min-width: 600px) {
   .display .digit {
-    border: #fcf8f3 solid 6px;
-    border-radius: 18px;
+    border-radius: 10px;
   }
 }
 .display .digit span {
@@ -88,31 +108,31 @@ body {
   top: 0em;
 }
 .display .digit span:nth-child(2) {
-  top: -1em;
+  top: 1em;
 }
 .display .digit span:nth-child(3) {
-  top: -2em;
+  top: 2em;
 }
 .display .digit span:nth-child(4) {
-  top: -3em;
+  top: 3em;
 }
 .display .digit span:nth-child(5) {
-  top: -4em;
+  top: 4em;
 }
 .display .digit span:nth-child(6) {
-  top: -5em;
+  top: 5em;
 }
 .display .digit span:nth-child(7) {
-  top: -6em;
+  top: 6em;
 }
 .display .digit span:nth-child(8) {
-  top: -7em;
+  top: 7em;
 }
 .display .digit span:nth-child(9) {
-  top: -8em;
+  top: 8em;
 }
 .display .digit span:nth-child(10) {
-  top: -9em;
+  top: 9em;
 }
 .display button {
   display: block;
@@ -224,7 +244,7 @@ button {
   width: 7.5vw;
   height: 7.5vw;
   text-align: center;
-  font-size: 25px;
+  font-size: 7.5vw;
   font-weight: bolder;
   background: #ffebb7;
   border: #fcf8f3 solid 1px;
@@ -234,6 +254,7 @@ button {
   .log .digit_small {
     width: 28px;
     height: 28px;
+    font-size: 28px;
   }
 }
 .log .date_time {
@@ -270,19 +291,15 @@ button {
   cursor: pointer;
 }
 
-.plus_one {
-  opacity: 0;
-}
-
 .fade-in {
   animation-name: fadeIn;
-  animation-duration: 1s;
+  animation-duration: 0.3s;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;

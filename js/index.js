@@ -51,6 +51,7 @@ function increase() {
         if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); return;}}
         if(units){count++;}
         showCount(count, false);
+        //fadeIn();
     }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
 }
 
@@ -60,18 +61,21 @@ function decrease() {
         if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); return;}}
         if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); return;}}
         if(units){count--}
-        showCount(count, false)
+        showCount(count, false);
+        //fadeIn();
     } //mettere else con messaggio di errore
 }
 
 //era questa per i numeri colorati +1/-1? cosa ci faccio adesso?
-function effect() {
+function fadeIn() {
     const effect = document.querySelector(".plus_one");
-    effect.
     effect.classList.add('fade-in');
+    effect.innerHTML = "+1";
+    effect.style.color = 008000;
     setTimeout(() => {
         effect.classList.remove('fade-in');
-    }, 1000);
+        effect.innerHTML = "";
+    }, 600);
 }
 
 function reset() {
