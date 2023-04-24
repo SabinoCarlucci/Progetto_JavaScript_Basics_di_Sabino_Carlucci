@@ -262,6 +262,14 @@ button {
   display: grid;
   row-gap: 3px;
 }
+.log .date_time img {
+  display: none;
+}
+@media (min-width: 400px) {
+  .log .date_time img {
+    display: unset;
+  }
+}
 .log .date_time div {
   margin: 2px 0;
 }

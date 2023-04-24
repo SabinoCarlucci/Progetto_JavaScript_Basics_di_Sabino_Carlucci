@@ -274,6 +274,13 @@ button {
     //margin: 5px 0;
     display: grid;
     row-gap: 3px;
+    img {
+      display: none;
+
+      @media (min-width: 400px) {
+        display: unset;
+      }
+    }
     div {
       margin: 2px 0;
     }
