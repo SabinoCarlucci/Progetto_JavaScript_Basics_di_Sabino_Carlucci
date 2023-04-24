@@ -23,6 +23,7 @@ let buttons = document.getElementsByClassName("digitBtn");
 for (let i of buttons) {
     i.addEventListener('click', function() {
         this.classList.toggle("on");
+        pulse(this);
         let id = this.parentElement.id;
         switch (id) {
             case "units":
@@ -44,26 +45,35 @@ for (let i of buttons) {
     })
 }
 
-function increase() {
+function increase(currentElement) {
     if (count < 9999) {
         if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); return;}}
         if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); return;}}
         if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); return;}}
         if(units){count++;}
         showCount(count, false);
+        pulse(currentElement);
         //fadeIn();
     }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
 }
 
-function decrease() {
+function decrease(currentElement) {
     if (count > 0) {
         if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); return;}}
         if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); return;}}
         if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); return;}}
         if(units){count--}
         showCount(count, false);
+        pulse(currentElement);
         //fadeIn();
     } //mettere else con messaggio di errore
+}
+
+function pulse(currentElement) {
+    currentElement.classList.add("pulse");
+    setTimeout(() => {
+        currentElement.classList.remove("pulse");
+    }, 300);
 }
 
 //era questa per i numeri colorati +1/-1? cosa ci faccio adesso?
@@ -78,17 +88,18 @@ function fadeIn() {
     }, 600);
 }
 
-function reset() {
+function reset(currentElement) {
     count = 0;
     spinNumbers(unitsDigit, 0);
     spinNumbers(tensDigit, 0);
     spinNumbers(hundredsDigit, 0);
     spinNumbers(thousandsDigit, 0);
+    pulse(currentElement);
 }
 
 //questa serve ancora? forse dovrei scrivere qui il codice per salvare, e richiamarla in showcount()
-function save() {
-    console.log(count);
+function save(currentElement) {
+    pulse(currentElement);
     showCount(count, true); //riscrivi con event listener in base a quale tasto premi, se salva o no
 }
 

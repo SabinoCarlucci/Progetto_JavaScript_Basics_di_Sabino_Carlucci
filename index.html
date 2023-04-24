@@ -9,10 +9,10 @@
 </head>
 <body>
 <div class="counter-container">
-    <button class="btn-reset" onclick="reset()">RESET</button>
+    <button class="btn-reset" onclick="reset(this)">RESET</button>
     <div class="frame"></div>
     <div class="display-container">
-        <button class="btn-minus" onclick="decrease()">-</button>
+        <button class="btn-minus" onclick="decrease(this)">-</button>
         <div class="display">
             <div id="units">
                 <div class="plus_one"></div>
@@ -76,9 +76,9 @@
                 <button class="digitBtn"></button>
             </div>
         </div>
-        <button class="btn-plus" onclick="increase()">+</button>
+        <button class="btn-plus" onclick="increase(this)">+</button>
     </div>
-    <button class="btn-save" onclick="save()">SAVE</button>
+    <button class="btn-save" onclick="save(this)">SAVE</button>
     <div class="log_registry">
         <div class="log">
                 <div class="display_log">

@@ -213,6 +213,7 @@ button {
   border: black solid 2vw;
   border-radius: 25px;
   padding: 5px 0;
+  margin-top: 10px;
   width: 85vw;
   max-height: 40vh;
   overflow-y: auto;
@@ -313,6 +314,23 @@ button {
     opacity: 1;
     transform: translateY(0);
   }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pulse {
+  animation: pulse;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
 }
 
 /*# sourceMappingURL=index.css.map */
