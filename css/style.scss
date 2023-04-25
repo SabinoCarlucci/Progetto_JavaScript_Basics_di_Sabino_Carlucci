@@ -229,7 +229,9 @@ button {
   width: $counter_container_width - $btn_side + $btn_border;
   max-height: 40vh;
   overflow-y: auto;
-  //::-webkit-scrollbar: ; //cambiare la scrollbar
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (min-width: 450px) {
     left: calc($btn_side_desktop/2) - calc($btn_border_desktop/2);
@@ -294,8 +296,7 @@ button {
   .deleteMe {
     padding-right: 5px;
     font-family: 'Concert One', cursive;
-    background-color: transparent; //ripristinare questo dopo aver centrato la maledetta X
-    //background-color: red;
+    background-color: transparent;
     color: black;
     font-size: 40px;
     height: 100%;
@@ -314,6 +315,8 @@ button {
   }
 }
 
+
+//animations
 .fade-in {
   animation-name: fadeIn;
   animation-duration: 0.3s;
@@ -347,4 +350,40 @@ button {
   animation-duration: 0.3s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+
+.shrink {
+  animation: shrink;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.expand {
+  animation: expand;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
 }

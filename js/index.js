@@ -14,8 +14,12 @@ let thousands = false;
 document.addEventListener( "click", deleteLog ); //click event for deleting single log
 function deleteLog(event){
     let element = event.target;
+    let log = element.parentElement.parentElement;
     if(element.tagName == 'P'&& element.parentElement.classList.contains("deleteMe") && element.classList.contains("material-symbols-outlined")){
-        element.parentElement.parentElement.remove();
+        shrink(log);
+        setTimeout(() => {
+            log.remove();
+        }, 200);
     }
 }
 
@@ -74,6 +78,10 @@ function pulse(currentElement) {
     setTimeout(() => {
         currentElement.classList.remove("pulse");
     }, 300);
+}
+
+function shrink(currentElement) {
+    currentElement.classList.add("shrink");
 }
 
 //era questa per i numeri colorati +1/-1? cosa ci faccio adesso?
@@ -136,7 +144,7 @@ function showCount(count, save) {
         let minutes = new Date().getMinutes().toString().padStart(2, '0');
         let seconds = new Date().getSeconds().toString().padStart(2, '0');
         let newLog = `
-        <div class="log">
+        <div class="log expand">
             <div class="display_log">
                 <div class="digit_small units_log">${tempUnits}</div>
                 <div class="digit_small tens_log">${tempTens}</div>
@@ -158,6 +166,9 @@ function showCount(count, save) {
             </div>
         </div>`;
         logRegistry.insertAdjacentHTML('afterbegin', newLog) ;
+        setTimeout(() => {
+            document.querySelector(".expand").classList.remove("expand");
+        }, 300);
     } else {
         // show numbers on display with spin effect
         spinNumbers(unitsDigit, tempUnits);
