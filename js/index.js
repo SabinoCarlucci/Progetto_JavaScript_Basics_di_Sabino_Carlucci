@@ -49,27 +49,47 @@ for (let i of buttons) {
     })
 }
 
+function popUp(plusOrMinus) {
+    for (let n of buttons) {
+        if (n.classList.contains("on")) {
+            let popUp = n.parentElement.querySelector(".pop_up");
+            if(plusOrMinus){
+                popUp.innerHTML = "+1";
+                popUp.style.color = "green";
+            } else {
+                popUp.innerHTML = "-1";
+                popUp.style.color = "#ef3434";
+            }
+            popUp.classList.toggle('fade-in');
+            setTimeout(() => {
+                popUp.classList.toggle('fade-in');
+                popUp.innerHTML = "";
+            }, 200);
+        }
+    }
+}
+
 function increase(currentElement) {
     if (count < 9999) {
-        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); return;}}
-        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); return;}}
-        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); return;}}
-        if(units){count++;}
+        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); popUp(true); return;}}
+        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); popUp(true); return;}}
+        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); popUp(true); return;}}
+        if(units){count++}
         showCount(count, false);
         pulse(currentElement);
-        //fadeIn();
+        popUp(true);
     }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
 }
 
 function decrease(currentElement) {
     if (count > 0) {
-        if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); return;}}
-        if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); return;}}
-        if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); return;}}
+        if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); popUp(false); return;}}
+        if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); popUp(false); return;}}
+        if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); popUp(false); return;}}
         if(units){count--}
         showCount(count, false);
         pulse(currentElement);
-        //fadeIn();
+        popUp(false);
     } //mettere else con messaggio di errore
 }
 
@@ -84,18 +104,6 @@ function shrink(currentElement) {
     currentElement.classList.add("shrink");
 }
 
-//era questa per i numeri colorati +1/-1? cosa ci faccio adesso?
-function fadeIn() {
-    const effect = document.querySelector(".plus_one");
-    effect.classList.add('fade-in');
-    effect.innerHTML = "+1";
-    effect.style.color = 008000;
-    setTimeout(() => {
-        effect.classList.remove('fade-in');
-        effect.innerHTML = "";
-    }, 600);
-}
-
 function reset(currentElement) {
     count = 0;
     spinNumbers(unitsDigit, 0);
@@ -105,18 +113,9 @@ function reset(currentElement) {
     pulse(currentElement);
 }
 
-//questa serve ancora? forse dovrei scrivere qui il codice per salvare, e richiamarla in showcount()
 function save(currentElement) {
     pulse(currentElement);
-    showCount(count, true); //riscrivi con event listener in base a quale tasto premi, se salva o no
-}
-
-// a che serve questa?
-function twoDigits(number) {
-    if (number < 10) {
-        number = "0" + number;
-        return number;
-    }
+    showCount(count, true);
 }
 
 function spinNumbers(array, number) {

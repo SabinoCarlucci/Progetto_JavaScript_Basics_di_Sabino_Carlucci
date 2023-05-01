@@ -1,15 +1,4 @@
-2) animazioni pulsanti; (fatto animazione pulse(), adesso mettere cambio colore)
-
 animazioni: togliere alone azzurro quando premo bottoni, già provato outline: none
-
-1) animazione con +1/-1 sopra numeri contatore;
-	- div per contenere +1/-1 sopra ogni cifra di display;
-	- div deve essere posizione assoluta, perchè altrimenti sposta cifra display;
-	- div vuoto, funzione js aggiunge testo e colore a seconda che sia addizione o sottrazione;
-	- classe css determina animazione;
-	- stessa animazione per entrambe classi + e -;
-	- animazione fade in mentre si ingrandisce, e poi fade out mentre si rimpicciolisce;
-	- traslazione parte veloce e poi rallenta fino a fermarsi un attimo;
 
 4) easter egg:
 	- premi x volte + quando sei a 9999 e appare vegeta che dice "it's over 9000";
