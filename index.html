@@ -8,105 +8,86 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-<div class="counter-container">
-    <button class="btn-reset" onclick="reset(this)">RESET</button>
-    <div class="frame"></div>
-    <div class="display-container">
-        <button class="btn-minus" onclick="decrease(this)">-</button>
-        <div class="display">
-            <div id="units">
-                <div class="pop_up"></div>
-                <div class="digit">
-                    <span>0</span>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span>8</span>
-                    <span>9</span>
-                </div>
-                <button class="on digitBtn"></button>
-            </div>
-            <div id="tens">
-                <div class="pop_up"></div>
-                <div class="digit">
-                    <span>0</span>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span>8</span>
-                    <span>9</span>
-                </div>
-                <button class="digitBtn"></button>
-            </div>
-            <div id="hundreds">
-                <div class="pop_up"></div>
-                <div class="digit">
-                    <span>0</span>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span>8</span>
-                    <span>9</span>
-                </div>
-                <button class="digitBtn"></button>
-            </div>
-            <div id="thousands">
-                <div class="pop_up"></div>
-                <div class="digit">
-                    <span>0</span>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span>8</span>
-                    <span>9</span>
-                </div>
-                <button class="digitBtn"></button>
-            </div>
-        </div>
-        <button class="btn-plus" onclick="increase(this)">+</button>
-    </div>
-    <button class="btn-save" onclick="save(this)">SAVE</button>
-    <div class="log_registry">
-        <div class="log">
-                <div class="display_log">
-                    <div class="digit_small units_log">0</div>
-                    <div class="digit_small tens_log">0</div>
-                    <div class="digit_small hundreds_log">0</div>
-                    <div class="digit_small thousands_log">0</div>
-                </div>
-                <div class="date_time">
-                    <div class="date">
-                        <img src="images/calendar-small-page.png" alt="calendario">
-                        <span>10</span>/<span>aprile</span>/<span>2023</span>
+    <div class="counter-container">
+        <button class="btn-reset" onclick="reset(this)">RESET</button>
+        <div class="frame"></div>
+        <div class="display-container">
+            <button class="btn-minus" onclick="decrease(this)">-</button>
+            <div class="display">
+                <div id="units">
+                    <div class="pop_up plus"></div>
+                    <div class="digit">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
                     </div>
-                    <div class="time">
-                        <img src="images/clock-circular-outline.png" alt="orologio">
-                        <span>21</span>:<span>28</span>:<span>30</span>
+                    <button class="on digitBtn"></button>
+                    <div class="pop_up minus"></div>
+                </div>
+                <div id="tens">
+                    <div class="pop_up plus"></div>
+                    <div class="digit">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
                     </div>
+                    <button class="digitBtn"></button>
+                    <div class="pop_up minus"></div>
                 </div>
-                <div class="deleteMe">
-                    <p class="material-symbols-outlined">close</p>
+                <div id="hundreds">
+                    <div class="pop_up plus"></div>
+                    <div class="digit">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                    </div>
+                    <button class="digitBtn"></button>
+                    <div class="pop_up minus"></div>
                 </div>
+                <div id="thousands">
+                    <div class="pop_up plus"></div>
+                    <div class="digit">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                    </div>
+                    <button class="digitBtn"></button>
+                    <div class="pop_up minus"></div>
+                </div>
+            </div>
+            <button class="btn-plus" onclick="increase(this)">+</button>
         </div>
-
+        <button class="btn-save" onclick="save(this)">SAVE</button>
+        <div class="log_registry"></div>
     </div>
-</div>
 
 <script src="js/index.js"></script>
 </body>

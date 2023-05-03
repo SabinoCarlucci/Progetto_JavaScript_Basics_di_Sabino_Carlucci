@@ -63,17 +63,34 @@ body {
   position: absolute;
   z-index: 1;
   left: 3.75vw;
-  top: -7.5vw;
   font-size: 7.5vw;
   line-height: 7.5vw;
-  transition: opacity 0.01s cubic-bezier(0.25, 1, 0.5, 1), top 0.2s ease-out;
 }
 @media (min-width: 450px) {
   .display .pop_up {
     left: 15px;
-    top: -30px;
     font-size: 30px;
     line-height: 30px;
+  }
+}
+.display .pop_up.minus {
+  bottom: -7.5vw;
+  color: red;
+  transition: opacity 0.01s cubic-bezier(0.25, 1, 0.5, 1), bottom 0.2s ease-in;
+}
+@media (min-width: 450px) {
+  .display .pop_up.minus {
+    bottom: -30px;
+  }
+}
+.display .pop_up.plus {
+  top: -7.5vw;
+  color: green;
+  transition: opacity 0.01s cubic-bezier(0.25, 1, 0.5, 1), top 0.2s ease-in;
+}
+@media (min-width: 450px) {
+  .display .pop_up.plus {
+    top: -30px;
   }
 }
 .display .digit {
@@ -134,22 +151,23 @@ body {
 .display .digit span:nth-child(10) {
   top: 9em;
 }
-.display button {
+.display .digitBtn {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 15vw;
   height: 10vw;
   border-radius: 11px;
+  background: #ef3434;
 }
 @media (min-width: 450px) {
-  .display button {
+  .display .digitBtn {
     width: 60px;
     height: 40px;
     border-radius: 18px;
   }
 }
-.display button.on {
+.display .digitBtn.on {
   background: green;
 }
 
@@ -303,13 +321,23 @@ button {
   cursor: pointer;
 }
 
-.pop_up.fade-in {
+.pop_up.plus.fade-in {
   opacity: 0.6;
   top: -15vw;
 }
 @media (min-width: 400px) {
-  .pop_up.fade-in {
+  .pop_up.plus.fade-in {
     top: -60px;
+  }
+}
+
+.pop_up.minus.fade-in {
+  opacity: 0.6;
+  bottom: -15vw;
+}
+@media (min-width: 400px) {
+  .pop_up.minus.fade-in {
+    bottom: -60px;
   }
 }
 

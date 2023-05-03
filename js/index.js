@@ -49,17 +49,25 @@ for (let i of buttons) {
     })
 }
 
-function popUp(plusOrMinus) {
+function popUpPlus() {
     for (let n of buttons) {
         if (n.classList.contains("on")) {
-            let popUp = n.parentElement.querySelector(".pop_up");
-            if(plusOrMinus){
-                popUp.innerHTML = "+1";
-                popUp.style.color = "green";
-            } else {
-                popUp.innerHTML = "-1";
-                popUp.style.color = "#ef3434";
-            }
+            let popUp = n.parentElement.querySelector(".pop_up.plus");
+            popUp.innerHTML = "+1";
+            popUp.classList.toggle('fade-in');
+            setTimeout(() => {
+                popUp.classList.toggle('fade-in');
+                popUp.innerHTML = "";
+            }, 200);
+        }
+    }
+}
+
+function popUpMinus() {
+    for (let n of buttons) {
+        if (n.classList.contains("on")) {
+            let popUp = n.parentElement.querySelector(".pop_up.minus");
+            popUp.innerHTML = "-1";
             popUp.classList.toggle('fade-in');
             setTimeout(() => {
                 popUp.classList.toggle('fade-in');
@@ -71,25 +79,25 @@ function popUp(plusOrMinus) {
 
 function increase(currentElement) {
     if (count < 9999) {
-        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); popUp(true); return;}}
-        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); popUp(true); return;}}
-        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); popUp(true); return;}}
+        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
+        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
+        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
         if(units){count++}
         showCount(count, false);
         pulse(currentElement);
-        popUp(true);
+        popUpPlus();
     }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
 }
 
 function decrease(currentElement) {
     if (count > 0) {
-        if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); popUp(false); return;}}
-        if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); popUp(false); return;}}
-        if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); popUp(false); return;}}
+        if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); popUpMinus(); return;}}
+        if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); popUpMinus(); return;}}
+        if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); popUpMinus(); return;}}
         if(units){count--}
         showCount(count, false);
         pulse(currentElement);
-        popUp(false);
+        popUpMinus();
     } //mettere else con messaggio di errore
 }
 

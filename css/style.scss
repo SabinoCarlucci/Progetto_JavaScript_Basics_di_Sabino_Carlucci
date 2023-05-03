@@ -10,20 +10,20 @@ $delete: #ef3434;
 $btn_side: 15vw;
 $btn_side_desktop: 60px;
 
-$switch_height: calc($btn_side * 2/3);
-$switch_height_desktop: calc($btn_side_desktop * 2/3);
+$switch_height: calc($btn_side * 2 / 3);
+$switch_height_desktop: calc($btn_side_desktop * 2 / 3);
 
 $btn_border: 2vw;
 $btn_border_desktop: 6px;
 
-$btn_reset_height: calc($btn_side/3);
-$btn_reset_height_desktop: calc($btn_side_desktop/3);
+$btn_reset_height: calc($btn_side / 3);
+$btn_reset_height_desktop: calc($btn_side_desktop / 3);
 
 $counter_container_width: 98vw;
 $counter_container_width_desktop: 400px;
 
-$btn_space: calc($btn_side * 2/3);
-$btn_space_desktop: calc($btn_side_desktop * 2/3);
+$btn_space: calc($btn_side * 2 / 3);
+$btn_space_desktop: calc($btn_side_desktop * 2 / 3);
 
 * {
   padding: 0;
@@ -34,13 +34,12 @@ body {
   background: $background;
 }
 
- .material-symbols-outlined {
-   font-variation-settings:
-           'FILL' 0,
-           'wght' 700,
-           'GRAD' 200,
-           'opsz' 40
- }
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 40
+}
 
 .counter-container, .counter-container > * {
   margin-right: auto;
@@ -59,7 +58,7 @@ body {
   }
 }
 
-.btn-plus, .btn-minus, .digit{
+.btn-plus, .btn-minus, .digit {
   width: $btn_side;
   height: $btn_side;
   text-align: center;
@@ -71,35 +70,55 @@ body {
 }
 
 .btn-plus, .btn-minus {
-  font-size: calc($btn_side * 2/3);
+  font-size: calc($btn_side * 2 / 3);
   @media (min-width: 450px) {
-    font-size: calc($btn_side_desktop * 2/3);
+    font-size: calc($btn_side_desktop * 2 / 3);
   }
 }
 
 .display {
   display: flex;
   flex-direction: row-reverse;
+
   #units, #tens, #hundreds, #thousands {
     position: relative;
   }
+
   .pop_up {
     opacity: 0;
     position: absolute;
     z-index: 1;
-    left: calc($btn_side * (1/4));
-    top: calc($btn_side/-2);
-    font-size: calc($btn_side/2);
-    line-height: calc($btn_side/2);
-    transition: opacity 0.01s cubic-bezier(0.25, 1, 0.5, 1), top 0.2s ease-out;
+    left: calc($btn_side * (1 / 4));
+    font-size: calc($btn_side / 2);
+    line-height: calc($btn_side / 2);
 
-    @media (min-width: 450px){
-      left: calc($btn_side_desktop * (1/4));
-      top: calc($btn_side_desktop/-2);
-      font-size: calc($btn_side_desktop/2);
-      line-height: calc($btn_side_desktop/2);
+    @media (min-width: 450px) {
+      left: calc($btn_side_desktop * (1 / 4));
+      font-size: calc($btn_side_desktop / 2);
+      line-height: calc($btn_side_desktop / 2);
     }
   }
+
+  .pop_up.minus {
+    bottom: calc($btn_side / -2);
+    color: red;
+    transition: opacity 0.01s cubic-bezier(0.25, 1, 0.5, 1), bottom 0.2s ease-in;
+
+    @media (min-width: 450px) {
+      bottom: calc($btn_side_desktop / -2);
+    }
+  }
+
+  .pop_up.plus {
+    top: calc($btn_side / -2);
+    color: green;
+    transition: opacity 0.01s cubic-bezier(0.25, 1, 0.5, 1), top 0.2s ease-in;
+
+    @media (min-width: 450px) {
+      top: calc($btn_side_desktop / -2);
+    }
+  }
+
   .digit {
     position: relative;
     overflow: hidden;
@@ -110,12 +129,12 @@ body {
     border: $background solid 2px;
     border-radius: 11px;
 
-    @media (min-width: 450px){
+    @media (min-width: 450px) {
       font-size: $btn_side_desktop;
       line-height: $btn_side_desktop;
     }
 
-    @media (min-width: 600px){
+    @media (min-width: 600px) {
       border-radius: 10px;
     }
 
@@ -126,24 +145,56 @@ body {
       margin: 0 auto;
       transition: top 0.3s ease-in-out;
     }
-    span:nth-child(1) { top: 0em; }
-    span:nth-child(2) { top: 1em; }
-    span:nth-child(3) { top: 2em; }
-    span:nth-child(4) { top: 3em; }
-    span:nth-child(5) { top: 4em; }
-    span:nth-child(6) { top: 5em; }
-    span:nth-child(7) { top: 6em; }
-    span:nth-child(8) { top: 7em; }
-    span:nth-child(9) { top: 8em; }
-    span:nth-child(10) { top: 9em; }
+
+    span:nth-child(1) {
+      top: 0em;
+    }
+
+    span:nth-child(2) {
+      top: 1em;
+    }
+
+    span:nth-child(3) {
+      top: 2em;
+    }
+
+    span:nth-child(4) {
+      top: 3em;
+    }
+
+    span:nth-child(5) {
+      top: 4em;
+    }
+
+    span:nth-child(6) {
+      top: 5em;
+    }
+
+    span:nth-child(7) {
+      top: 6em;
+    }
+
+    span:nth-child(8) {
+      top: 7em;
+    }
+
+    span:nth-child(9) {
+      top: 8em;
+    }
+
+    span:nth-child(10) {
+      top: 9em;
+    }
   }
-  button {
+
+  .digitBtn {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: $btn_side;
     height: $switch_height;
     border-radius: 11px;
+    background: $delete;
 
     @media (min-width: 450px) {
       width: $btn_side_desktop;
@@ -152,7 +203,7 @@ body {
     }
   }
 
-  button.on {
+  .digitBtn.on {
     background: green;
   }
 }
@@ -160,7 +211,7 @@ body {
 .frame {
   position: absolute;
   left: calc($btn_side/2) - calc($btn-border / 2);
-  top: calc($btn_border + ($btn_reset_height + $btn_border)/2);
+  top: calc($btn_border + ($btn_reset_height + $btn_border) / 2);
   border: black solid $btn_border;
   border-radius: 25px;
   width: $counter_container_width - $btn_side + $btn_border;
@@ -181,7 +232,7 @@ body {
             calc($btn_border_desktop * 4) +
             $btn_reset_height_desktop +
             $btn_side_desktop +
-            $switch_height_desktop ;
+            $switch_height_desktop;
   }
 }
 
@@ -226,6 +277,7 @@ button {
   width: $counter_container_width - $btn_side + $btn_border;
   max-height: 40vh;
   overflow-y: auto;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -246,16 +298,18 @@ button {
   background-color: $buttons;
   border: $background solid 3.5px;
   border-radius: 25px;
+
   .display_log {
     display: flex;
     flex-direction: row-reverse;
     margin: 5px;
   }
+
   .digit_small {
-    width: calc($btn_side/2);
-    height: calc($btn_side/2);
+    width: calc($btn_side / 2);
+    height: calc($btn_side / 2);
     text-align: center;
-    font-size: calc($btn_side/2);
+    font-size: calc($btn_side / 2);
     font-weight: bolder;
     background: $display;
     border: $background solid 1px;
@@ -268,10 +322,12 @@ button {
     }
 
   }
+
   .date_time {
     align-self: center;
     display: grid;
     row-gap: 3px;
+
     img {
       display: none;
 
@@ -279,15 +335,18 @@ button {
         display: unset;
       }
     }
+
     div {
       margin: 2px 0;
     }
+
     span {
       background-color: $display;
       padding: 0 3px;
       border-radius: 25%;
     }
   }
+
   .deleteMe {
     padding-right: 5px;
     font-family: 'Concert One', cursive;
@@ -299,9 +358,11 @@ button {
     line-height: inherit;
     border-radius: 0 25px 25px 0;
     text-align: center;
+
     p {
       margin: 0;
     }
+
     &:hover {
       background-color: $delete;
       color: $buttons;
@@ -312,7 +373,7 @@ button {
 
 
 //animations
-.pop_up.fade-in {
+.pop_up.plus.fade-in {
   opacity: 0.6;
   top: calc($btn_side * -1);
 
@@ -320,6 +381,16 @@ button {
     top: calc($btn_side_desktop * -1);
   }
 }
+
+.pop_up.minus.fade-in {
+  opacity: 0.6;
+  bottom: calc($btn_side * -1);
+
+  @media (min-width: 400px) {
+    bottom: calc($btn_side_desktop * -1);
+  }
+}
+
 
 @keyframes pulse {
   0% {
