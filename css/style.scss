@@ -62,6 +62,10 @@ body {
   width: $btn_side;
   height: $btn_side;
   text-align: center;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none;
 
   @media (min-width: 450px) {
     width: $btn_side_desktop;
