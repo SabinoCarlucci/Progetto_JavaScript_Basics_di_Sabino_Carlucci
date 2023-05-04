@@ -1,7 +1,3 @@
-1) animazione con -1 sotto contatore, +1 sopra contatore
-
-2) tenendo premuto il mouse su tasti + o - , i numeri devono continuare a aumentare/diminuire.
-
 4) easter egg:
 	- premi x volte + quando sei a 9999 e appare vegeta che dice "it's over 9000";
 	- premi x volte - quando sei a 0 e appare subzero;

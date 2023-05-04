@@ -6,6 +6,8 @@ const thousandsDigit = Array.from(document.getElementById('thousands').querySele
 
 let logRegistry = document.querySelector(".log_registry");
 
+let intervalId;
+
 let units = true;
 let tens = false;
 let hundreds = false;
@@ -75,6 +77,25 @@ function popUpMinus() {
             }, 200);
         }
     }
+}
+
+//increase/decrease on hold
+function changeCountOnHold(currentElement) {
+    if(currentElement.classList.contains("btn-plus")) {
+        increase(currentElement);
+        intervalId = setInterval(() => {
+            increase(currentElement);
+        }, 700);
+    } else {
+        decrease(currentElement);
+        intervalId = setInterval(() => {
+            decrease(currentElement);
+        }, 700);
+    }
+}
+
+function stopCount() {
+    clearInterval(intervalId);
 }
 
 function increase(currentElement) {

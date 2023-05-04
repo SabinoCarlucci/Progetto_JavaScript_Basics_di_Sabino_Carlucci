@@ -12,7 +12,7 @@
         <button class="btn-reset" onclick="reset(this)">RESET</button>
         <div class="frame"></div>
         <div class="display-container">
-            <button class="btn-minus" onclick="decrease(this)">-</button>
+            <button class="btn-minus" onmousedown="changeCountOnHold(this)" onmouseup="stopCount()">-</button>
             <div class="display">
                 <div id="units">
                     <div class="pop_up plus"></div>
@@ -83,7 +83,7 @@
                     <div class="pop_up minus"></div>
                 </div>
             </div>
-            <button class="btn-plus" onclick="increase(this)">+</button>
+            <button class="btn-plus" onmousedown="changeCountOnHold(this)" onmouseup="stopCount()">+</button>
         </div>
         <button class="btn-save" onclick="save(this)">SAVE</button>
         <div class="log_registry"></div>
