@@ -237,7 +237,7 @@ button {
   padding: 5px 0;
   margin-top: 10px;
   width: 85vw;
-  max-height: 40vh;
+  max-height: 51vh;
   overflow-y: auto;
 }
 .log_registry::-webkit-scrollbar {
@@ -245,6 +245,7 @@ button {
 }
 @media (min-width: 450px) {
   .log_registry {
+    max-height: 49vh;
     left: 27px;
     border: black solid 6px;
     border-radius: 25px;

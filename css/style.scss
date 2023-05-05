@@ -279,7 +279,7 @@ button {
   padding: 5px 0;
   margin-top: 10px;
   width: $counter_container_width - $btn_side + $btn_border;
-  max-height: 40vh;
+  max-height: 51vh;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
@@ -287,6 +287,7 @@ button {
   }
 
   @media (min-width: 450px) {
+    max-height: 49vh;
     left: calc($btn_side_desktop/2) - calc($btn_border_desktop/2);
     border: black solid $btn_border_desktop;
     border-radius: 25px;
