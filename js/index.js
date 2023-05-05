@@ -13,6 +13,9 @@ let tens = false;
 let hundreds = false;
 let thousands = false;
 
+let egg1 = 0;
+let egg2 = 0;
+
 document.addEventListener( "click", deleteLog ); //click event for deleting single log
 function deleteLog(event){
     let element = event.target;
@@ -107,6 +110,15 @@ function increase(currentElement) {
         showCount(count, false);
         pulse(currentElement);
         popUpPlus();
+    } else {
+        egg1++;
+        if (egg1 === 10) {
+            let egg = `
+            <div class="egg_log">
+                <img class="egg1" src="images/egg1.jpg" alt="the counter is over 9000">
+            </div>`
+            logRegistry.insertAdjacentHTML('afterbegin', egg);
+        }
     }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
 }
 
@@ -119,7 +131,16 @@ function decrease(currentElement) {
         showCount(count, false);
         pulse(currentElement);
         popUpMinus();
-    } //mettere else con messaggio di errore
+    } else {
+        egg2++;
+        if (egg2 === 10) {
+            let egg = `
+            <div class="egg_log">
+                <img class="egg2" src="images/egg2.webp" alt="the counter is below 0">
+            </div>`
+            logRegistry.insertAdjacentHTML('afterbegin', egg);
+        }
+    }
 }
 
 function pulse(currentElement) {
@@ -193,7 +214,7 @@ function showCount(count, save) {
                 <p class="material-symbols-outlined">close</p>
             </div>
         </div>`;
-        logRegistry.insertAdjacentHTML('afterbegin', newLog) ;
+        logRegistry.insertAdjacentHTML('afterbegin', newLog);
         setTimeout(() => {
             document.querySelector(".expand").classList.remove("expand");
         }, 300);

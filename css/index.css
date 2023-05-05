@@ -252,14 +252,21 @@ button {
   }
 }
 
+.log, .egg1, .egg2 {
+  border: #fcf8f3 solid 3.5px;
+  border-radius: 25px;
+}
+
+.egg1, .egg2 {
+  max-width: 100%;
+}
+
 .log {
   height: 57px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #eff1f4;
-  border: #fcf8f3 solid 3.5px;
-  border-radius: 25px;
 }
 .log .display_log {
   display: flex;

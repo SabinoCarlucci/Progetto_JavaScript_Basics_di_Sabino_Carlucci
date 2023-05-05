@@ -1,3 +1,0 @@
-4) easter egg:
-	- premi x volte + quando sei a 9999 e appare vegeta che dice "it's over 9000";
-	- premi x volte - quando sei a 0 e appare subzero;
