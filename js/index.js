@@ -5,10 +5,10 @@ const hundredsDigit = Array.from(document.getElementById('hundreds').querySelect
 const thousandsDigit = Array.from(document.getElementById('thousands').querySelector('.digit').querySelectorAll('span'));
 
 let logRegistry = document.querySelector(".log_registry");
-let container = document.querySelector(".counter-container");
+const btnMinus = document.querySelector(".btn-minus");
+const btnPlus = document.querySelector(".btn-plus");
 
 let intervalId;
-let isHolding = false;
 
 let units = true;
 let tens = false;
@@ -21,8 +21,14 @@ let egg2 = 0;
 document.addEventListener( "click", deleteLog ); //click event for deleting single log
 function deleteLog(event){
     let element = event.target;
-    let log = element.parentElement;
     if(element.classList.contains("deleteMe")){
+        let log = element.parentElement;
+        shrink(log);
+        setTimeout(() => {
+            log.remove();
+        }, 200);
+    } else if (element.classList.contains("material-symbols-outlined") && element.innerText.trim() === "close") {
+        let log = element.parentElement.parentElement;
         shrink(log);
         setTimeout(() => {
             log.remove();
@@ -84,77 +90,68 @@ function popUpMinus() {
     }
 }
 
+btnMinus.addEventListener("pointerdown", () => {decrease(); changeCountOnHold(decrease)});
+btnPlus.addEventListener("pointerdown", () => {increase(); changeCountOnHold(increase)});
+btnMinus.addEventListener("pointerup", stopCount);
+btnPlus.addEventListener("pointerup", stopCount);
+
 //increase/decrease on hold
-function changeCountOnHold(currentElement) {
-    isHolding = true;
-    if(currentElement.classList.contains("btn-plus")) {
-        increase(currentElement);
-        intervalId = setInterval(() => {
-            increase(currentElement);
-        }, 700);
-    } else {
-        decrease(currentElement);
-        intervalId = setInterval(() => {
-            decrease(currentElement);
-        }, 700);
-    }
+function changeCountOnHold(increaseOrDecrease) {
+    intervalId = setInterval(() => {
+        increaseOrDecrease();
+    }, 700);
 }
 
 function stopCount() {
-    isHolding = false;
     clearInterval(intervalId);
 }
 
-function increase(currentElement) {
-    if (isHolding) {
-        if (count < 9999) {
-            if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
-            if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
-            if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
-            if(units){count++}
-            showCount(count, false);
-            pulse(currentElement);
-            popUpPlus();
-        } else {
-            egg1++;
-            if (egg1 === 10) {
-                stopCount();
-                let egg = `
-            <div class="egg_modal">
-                <div class="deleteMe">
-                    <p class="material-symbols-outlined">close</p>
-                </div>
-                <img class="egg1" src="images/egg1.jpg" alt="the counter is over 9000">
-            </div>`
-                logRegistry.insertAdjacentHTML('afterbegin', egg);
-            }
+function increase() {
+    if (count < 9999) {
+        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
+        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
+        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
+        if(units){count++}
+        showCount(count, false);
+        pulse(btnPlus);
+        popUpPlus();
+    } else {
+        egg1++;
+        stopCount();
+        if (egg1 === 10) {
+            let egg = `
+    <div class="egg_modal">
+        <div class="deleteMe">
+            <p class="material-symbols-outlined">close</p>
+        </div>
+        <img class="egg1" src="images/egg1.jpg" alt="the counter is over 9000">
+    </div>`
+            logRegistry.insertAdjacentHTML('afterbegin', egg);
         }
     }
 }
 
-function decrease(currentElement) {
-    if (isHolding) {
-        if (count > 0) {
-            if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); popUpMinus(); return;}}
-            if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); popUpMinus(); return;}}
-            if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); popUpMinus(); return;}}
-            if(units){count--}
-            showCount(count, false);
-            pulse(currentElement);
-            popUpMinus();
-        } else {
-            egg2++;
-            if (egg2 === 10) {
-                stopCount();
-                let egg = `
-            <div class="egg_modal">
-                <div class="deleteMe">
-                    <p class="material-symbols-outlined">close</p>
-                </div>
-                <img class="egg2" src="images/egg2.webp" alt="the counter is below 0">
-            </div>`
-                logRegistry.insertAdjacentHTML('afterbegin', egg);
-            }
+function decrease() {
+    if (count > 0) {
+        if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); popUpMinus(); return;}}
+        if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); popUpMinus(); return;}}
+        if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); popUpMinus(); return;}}
+        if(units){count--}
+        showCount(count, false);
+        pulse(btnMinus);
+        popUpMinus();
+    } else {
+        egg2++;
+        stopCount();
+        if (egg2 === 10) {
+            let egg = `
+    <div class="egg_modal">
+        <div class="deleteMe">
+            <p class="material-symbols-outlined">close</p>
+        </div>
+        <img class="egg2" src="images/egg2.webp" alt="the counter is below 0">
+    </div>`
+            logRegistry.insertAdjacentHTML('afterbegin', egg);
         }
     }
 }
