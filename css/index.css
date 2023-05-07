@@ -199,6 +199,7 @@ body {
 button {
   border: #fcf8f3 solid 2vw;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 @media (min-width: 450px) {
   button {

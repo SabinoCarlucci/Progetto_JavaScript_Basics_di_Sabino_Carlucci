@@ -243,6 +243,7 @@ body {
 button {
   border: $background solid $btn_border;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   @media (min-width: 450px) {
     border: $background solid $btn_border_desktop;
