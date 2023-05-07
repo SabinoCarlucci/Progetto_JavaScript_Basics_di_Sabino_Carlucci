@@ -5,8 +5,10 @@ const hundredsDigit = Array.from(document.getElementById('hundreds').querySelect
 const thousandsDigit = Array.from(document.getElementById('thousands').querySelector('.digit').querySelectorAll('span'));
 
 let logRegistry = document.querySelector(".log_registry");
+let container = document.querySelector(".counter-container");
 
 let intervalId;
+let isHolding = false;
 
 let units = true;
 let tens = false;
@@ -19,8 +21,8 @@ let egg2 = 0;
 document.addEventListener( "click", deleteLog ); //click event for deleting single log
 function deleteLog(event){
     let element = event.target;
-    let log = element.parentElement.parentElement;
-    if(element.tagName == 'P'&& element.parentElement.classList.contains("deleteMe") && element.classList.contains("material-symbols-outlined")){
+    let log = element.parentElement;
+    if(element.classList.contains("deleteMe")){
         shrink(log);
         setTimeout(() => {
             log.remove();
@@ -84,6 +86,7 @@ function popUpMinus() {
 
 //increase/decrease on hold
 function changeCountOnHold(currentElement) {
+    isHolding = true;
     if(currentElement.classList.contains("btn-plus")) {
         increase(currentElement);
         intervalId = setInterval(() => {
@@ -98,47 +101,60 @@ function changeCountOnHold(currentElement) {
 }
 
 function stopCount() {
+    isHolding = false;
     clearInterval(intervalId);
 }
 
 function increase(currentElement) {
-    if (count < 9999) {
-        if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
-        if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
-        if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
-        if(units){count++}
-        showCount(count, false);
-        pulse(currentElement);
-        popUpPlus();
-    } else {
-        egg1++;
-        if (egg1 === 10) {
-            let egg = `
-            <div class="egg_log">
+    if (isHolding) {
+        if (count < 9999) {
+            if(thousands){if (count < 8999) {count = count+1000} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
+            if(hundreds){if (count < 9899) {count = count+100} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
+            if(tens){if (count < 9989) {count = count+10} else {count = 9999; showCount(count, false); popUpPlus(); return;}}
+            if(units){count++}
+            showCount(count, false);
+            pulse(currentElement);
+            popUpPlus();
+        } else {
+            egg1++;
+            if (egg1 === 10) {
+                stopCount();
+                let egg = `
+            <div class="egg_modal">
+                <div class="deleteMe">
+                    <p class="material-symbols-outlined">close</p>
+                </div>
                 <img class="egg1" src="images/egg1.jpg" alt="the counter is over 9000">
             </div>`
-            logRegistry.insertAdjacentHTML('afterbegin', egg);
+                logRegistry.insertAdjacentHTML('afterbegin', egg);
+            }
         }
-    }//fare controllo per evitare di andare oltre 9999 e mettere easter egg come per il meno
+    }
 }
 
 function decrease(currentElement) {
-    if (count > 0) {
-        if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); popUpMinus(); return;}}
-        if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); popUpMinus(); return;}}
-        if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); popUpMinus(); return;}}
-        if(units){count--}
-        showCount(count, false);
-        pulse(currentElement);
-        popUpMinus();
-    } else {
-        egg2++;
-        if (egg2 === 10) {
-            let egg = `
-            <div class="egg_log">
+    if (isHolding) {
+        if (count > 0) {
+            if(thousands){if (count > 1000) {count = count-1000} else {count = 0; showCount(count, false); popUpMinus(); return;}}
+            if(hundreds){if (count > 100) {count = count-100} else {count = 0; showCount(count, false); popUpMinus(); return;}}
+            if(tens){if (count > 10) {count = count-10} else {count = 0; showCount(count, false); popUpMinus(); return;}}
+            if(units){count--}
+            showCount(count, false);
+            pulse(currentElement);
+            popUpMinus();
+        } else {
+            egg2++;
+            if (egg2 === 10) {
+                stopCount();
+                let egg = `
+            <div class="egg_modal">
+                <div class="deleteMe">
+                    <p class="material-symbols-outlined">close</p>
+                </div>
                 <img class="egg2" src="images/egg2.webp" alt="the counter is below 0">
             </div>`
-            logRegistry.insertAdjacentHTML('afterbegin', egg);
+                logRegistry.insertAdjacentHTML('afterbegin', egg);
+            }
         }
     }
 }
