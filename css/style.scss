@@ -3,7 +3,9 @@
 //colors
 $background: #fcf8f3;
 $display: #ffebb7;
-$buttons: #eff1f4;
+$buttons: #e8e8e8;
+$digitBtn-off: #575757;
+$digitBtn-on: #55c59d;
 $delete: #ef3434;
 
 //measures
@@ -32,6 +34,17 @@ $btn_space_desktop: calc($btn_side_desktop * 2 / 3);
 
 body {
   background: $background;
+}
+
+button {
+  border: $background solid $btn_border;
+  cursor: pointer;
+  background-color: $buttons;
+  -webkit-tap-highlight-color: transparent;
+
+  @media (min-width: 450px) {
+    border: $background solid $btn_border_desktop;
+  }
 }
 
 .material-symbols-outlined {
@@ -115,7 +128,7 @@ body {
 
   .pop_up.plus {
     top: calc($btn_side / -2);
-    color: green;
+    color: $digitBtn-on;
     transition: opacity 0.01s cubic-bezier(0.25, 1, 0.5, 1), top 0.2s ease-in;
 
     @media (min-width: 450px) {
@@ -198,7 +211,7 @@ body {
     width: $btn_side;
     height: $switch_height;
     border-radius: 11px;
-    background: $delete;
+    background: $digitBtn-off;
 
     @media (min-width: 450px) {
       width: $btn_side_desktop;
@@ -208,7 +221,7 @@ body {
   }
 
   .digitBtn.on {
-    background: green;
+    background: $digitBtn-on;
   }
 }
 
@@ -237,16 +250,6 @@ body {
             $btn_reset_height_desktop +
             $btn_side_desktop +
             $switch_height_desktop;
-  }
-}
-
-button {
-  border: $background solid $btn_border;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-
-  @media (min-width: 450px) {
-    border: $background solid $btn_border_desktop;
   }
 }
 
@@ -344,7 +347,7 @@ button {
     font-size: calc($btn_side / 2);
     font-weight: bolder;
     background: $display;
-    border: $background solid 1px;
+    border: $buttons solid 1px; //same color as log
     border-radius: 8px;
 
     @media (min-width: 450px) {
